@@ -1,0 +1,136 @@
+<!-- Title group  -->
+<div class="title-group">
+    <h1 class="mat-h1">Registro</h1>
+    <mat-divider fxFlex="1 0"></mat-divider>
+  </div>
+  
+  <!-- Form -->
+  <div class="inner-wrapper">
+    <form [formGroup]="studentForm" (ngSubmit)="submitStudentForm()" #resetStudentForm="ngForm" novalidate>
+      <!-- Left block -->
+      <mat-card>
+        <div class="controlers-wrapper">
+          <!-- Name -->
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Nombre" formControlName="student_name" autocomplete="off">
+            <mat-error *ngIf="handleError('student_name', 'required')">
+              Debe proveer un<strong>Nombre</strong>
+            </mat-error>
+          </mat-form-field>
+
+            
+          <!-- Email -->
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder=" email" formControlName="student_email" autocomplete="off">
+            <mat-error *ngIf="handleError('student_email', 'required')">
+              Debe proveer un<strong> email</strong>
+            </mat-error>
+            <mat-error *ngIf="handleError('student_email', 'email')">
+              Debe proveer un email<strong> válido</strong>
+            </mat-error>
+          </mat-form-field>
+  
+          <!-- Section -->
+          <mat-form-field>
+            <mat-label>Como se enteró del evento</mat-label>
+             <mat-select [(value)]="selected" formControlName="section"> 
+              <mat-option [value]="sectioinArray" *ngFor="let sectioinArray of SectioinArray">{{sectioinArray}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="handleError('section', 'required')">
+              Section is required
+            </mat-error>
+          </mat-form-field>
+
+         
+
+          <!-- University -->
+           <mat-form-field class="example-full-width">
+              <input matInput placeholder=" Universidad" formControlName="student_university" autocomplete="off">
+              <mat-error *ngIf="handleError('student_university')">
+                Debe proveer un<strong> email</strong>
+              </mat-error>
+            </mat-form-field>
+<!-- faculty -->
+<mat-form-field class="example-full-width">
+  <input matInput placeholder=" Facultad/año escolar" formControlName="student_faculty" autocomplete="off">
+  <mat-error *ngIf="handleError('student_faculty')">
+    Debe proveer un<strong> facultad</strong>
+  </mat-error>
+</mat-form-field>
+
+
+
+        </div>
+      </mat-card>
+
+
+  
+      <!-- Right block -->
+      <mat-card>
+          <div class="controlers-wrapper">
+          
+           <!-- Phone -->
+           <mat-form-field class="example-full-width">
+              <input matInput placeholder="Telefono"  autocomplete="off" formControlName="student_phone">
+            </mat-form-field>
+  
+ <!-- Ocupation -->
+ <mat-form-field class="example-full-width">
+  <input matInput placeholder=" Ocupación/Profesión" formControlName="student_ocupation" autocomplete="off">
+  <mat-error *ngIf="handleError('student_faculty')">
+    Debe proveer un<strong> ocupacion</strong>
+  </mat-error>
+</mat-form-field>
+
+
+           
+
+          <!-- Date of birth -->
+          
+         <!--  <mat-form-field>
+            <input matInput readonly [matDatepicker]="picker" placeholder="Date of birth" formControlName="dob"
+              (dateChange)="formatDate($event)">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="handleError('dob', 'required')">
+              Date of birth is required
+            </mat-error>
+          </mat-form-field> -->
+   
+          <!-- Gender -->
+          <div class="misc-bottom-padding">
+            <mat-label>Genero:</mat-label>
+            <mat-radio-group aria-label="Selecione una opcion" formControlName="gender">
+              <mat-radio-button value="Male">Masculino</mat-radio-button>
+              <mat-radio-button value="Female">Femenino</mat-radio-button>
+            </mat-radio-group>
+          </div>
+
+          <br>    
+          <!-- comment -->
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder=" Comentario" formControlName="student_comment" autocomplete="off">
+            <mat-error *ngIf="handleError('student_faculty')">
+              Debe proveer un<strong> comentario</strong>
+            </mat-error>
+          </mat-form-field>
+           
+        </div>
+
+        
+      </mat-card>
+  
+
+
+
+      <!-- Submit & Reset -->
+      <mat-card>
+        <div class="full-wrapper button-wrapper">
+          <div class="button-wrapper">
+            <button mat-flat-button color="warn">Submit</button>
+          </div>
+        </div>
+      </mat-card>
+    </form>
+  </div>
